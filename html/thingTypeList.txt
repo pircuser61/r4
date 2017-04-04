@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Виды товаров</title>
+ </head> 
+<body>
+<a href = "/"> <= </a> , <a href = "/thing_type/">Виды товаров</a> 
+<hr>
+{{messages}}
+
+<form method="post" action = "/thing_type/">
+<input type = "hidden" name = "id" value = "">
+<input type = "hidden" name = "cmd" value = "add">
+<p><label> name </label> <input type = "text" name = "name" ></p>
+<button type = "submit" >добавить</button>
+</form>
+<hr>
+
+{% if types is None or len(types) < 1 %}
+    Нет записей
+{% else %}
+    <table >
+    {% for item in types %}
+        <tr bgcolor="#DDBBFF">
+        <td>{{ item[0] }}</td> 
+        <td>{{ item[1] }}</td> 
+        <td><form method = "post"> 
+        <input type = "hidden" name = "cmd" value = "del">
+        <input type ="hidden" name="id" value={{item[0]}}> <button type="submit">[x]</button>
+        </form> </td>
+        <td> <a href = "/thing_type/{{item[0]}}"> edit </a></td>
+        </tr>
+    {% end %}
+    </table>
+{% end %}
+ </body>

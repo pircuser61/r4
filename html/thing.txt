@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Товар</title>
+ </head> 
+<body>
+<a href = "/thing/"> <= </a> 
+<hr>
+{{messages}}
+<hr>
+{% if thing %}
+    <form method="post" action = "/thing/">
+    <input type = "hidden" name = "cmd" value = "upd">
+    <input type = "hidden" name = "id_" value = "{{thing[0]}}">
+    <p><label> name </label> <input type = "text" name = "name" value = "{{thing[1]}}"></p>
+    <p>type <select size ="0" name = "type_" required>
+    {% for type in types %}
+        {% if thing[2] == type [0] %}
+            <option selected value = "{{type[0]}}"> {{type[0]}}:{{type[1]}}</option> 
+        {% else %}
+            <option value = "{{type[0]}}"> {{type[0]}}:{{type[1]}}</option> 
+        {% end %}
+    {% end %}
+    </select></p>
+
+    <p>user <input type = "text" name = "user" value = "{{thing[3]}}"></p>
+	<p>shipment <input type = "text" name = "shipment" value = "{{thing[4]}}"></p>
+	
+    <p>date <input type = "text" name = "date" value = "{{thing[5]}}"></p>
+    <p>sum  <input type = "text" name = "sum_"  value = "{{thing[6]}}"></p>
+    <p>info <input type = "text" name = "info" value = "{{thing[7]}}"></p>
+    <input type = "submit" value = "Обновить">
+    </form>
+{% else %}
+    Объект не найден
+{% end %}
+<hr>
+
+</body>

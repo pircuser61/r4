@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Товары</title>
+ </head> 
+<body>
+<a href = "/"> <= </a> , <a href = "/thing/">Товары</a> 
+<hr>
+
+{{messages}}
+
+{% if types and users %}
+    <form method="post" action = "/thing/">
+    <input type = "hidden" name = "cmd" value = "add">
+    <p> name  <input type = "text" name = "name" ></p>
+
+    <p>type <select size ="0" name = "type_" required>
+    {% for type in types %}
+        <option value = "{{type[0]}}"> {{type[0]}}:{{type[1]}}</option> 
+    {% end %}
+     </select></p>
+
+    <p>user  <input type = "text" name = "user" ></p>
+	<p>shipment <input type = "text" name = "shipment" ></p>
+	<p>date <input type = "text" name = "date" ></p>
+    <p> sum  <input type = "text" name =  "sum_" ></p>
+    <p> info  <input type = "text" name = "info" ></p>
+    <button type = "submit" >добавить</button>
+    </form>
+ 
+{% else %}
+Нет пользователей или типов товаров
+{% end %}
+<hr>
+<a href = "/thing/?page={{page -1}}"> <= </a> 
+{{page}}
+<a href = "/thing/?page={{page +1}}"> => </a> 
+<hr>
+Total: {{thingCount}}<br>
+
+
+<hr>
+
+{% if things   %}
+    <table>
+    <tr bgcolor="#AA88DD">
+    <td>id</td> 
+    <td>name</td> 
+    <td>type</td>
+    <td>user</td>
+	<td>shipment</td>
+    <td>date</td> 
+    <td>sum</td> 
+    <td>paid</td> 
+    <td>pay count</td> 
+    <td>del</td> 
+    <td>edit</td> 
+    {% for item in things %}
+        <tr bgcolor="#DDBBFF">
+        <td>{{ item[0] }}</td> 
+        <td>{{ item[1] }}</td> 
+        <td>{{ item[2] }}</td>
+        <td>{{ item[3] }}</td> 
+        <td>{{ item[4] }}</td> 
+        <td>{{ item[5] }}</td> 
+        <td>{{ item[6] }}</td> 
+        <td>{{ item[7] }}</td> 
+		<td>{{ item[8] }}</td> 
+        <td>
+            <form method = "post"> 
+            <input type = "hidden" name = "cmd" value = "del">
+            <input type ="hidden" name="id" value={{item[0]}}> <button type="submit">[x]</button>
+            </form> 
+            </td>
+        <td> <a href = "/thing/{{item[0]}}"> edit </a></td>
+        </tr>
+    {% end %}
+    </table> 
+{% else %}  
+    Нет записей
+{% end %}
+ <hr> 
+ </body>
+ </html>

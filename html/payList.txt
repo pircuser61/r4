@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Платежи </title>
+ </head> 
+<body>
+<a href = "/"> <= </a> , <a href = "/pay/">Платежи </a> 
+<hr>
+{{messages}}<br>
+
+<hr>
+    <form method="post" action = "/pay/">
+    <input type = "hidden" name = "cmd" value = "add">
+    <p> date  <input type = "text" name = "date" ></p>
+    <p> caption  <input type = "text" name = "caption" ></p>
+    <p> user  <input type = "text" name = "user" ></p>
+
+    <p> thing 
+        <select name = thing size = "0" requried >
+        {% for item in things %}
+            <option value = {{item[0]}}> {{item[0]}}:{{item[1]}} </option>
+        {%end%}
+        </select>
+        </p>
+    <p> sum  <input type = "text" name =  "sum_" ></p>
+
+    <button type = "submit" >добавить</button>
+    </form>
+    <hr>
+    total: {{count}}
+<form action = "/pay/"> 
+page <input type = "number" name = "page" value = "{{page}}">
+user <input type = "text" name = "filter_user" value = "{{filter_user}}">
+thing <input type = "text" name = "filter_thing" value = "{{filter_thing}}"> 
+year <input type = "number" name = "year" value = "{{year}}"> 
+day <input type = "number" name = "day" value = "{{day}}">  
+
+<input type = "submit" value = "применить "> 
+</form>
+<hr>
+
+{% if pays is None or len(pays)<1 %}
+    Нет записей
+{% else %} 
+
+    <table >
+    <tr bgcolor="#AA88DD">
+        <td>id</td> 
+        <td>date</td> 
+        <td>caption</td>
+        <td>user</td> 
+        <td>thing</td> 
+        <td>sum</td> 
+        <td>del</td> 
+        <td>edit</td> 
+    </tr>
+    {% for item in pays %}
+        <tr bgcolor="#DDBBFF">
+            <td>{{ item["id_"] }}</td> 
+            <td>{{ item["date_"] }}</td> 
+            <td>{{ item["caption"] }}</td>
+            <td>{{ item["user"] }}</td> 
+            <td>
+                <a href="/thing/{{item["thing_id"]}}">
+                {{ item["thing"] }}
+                </a>
+            </td> 
+            <td>{{ item["sum_"] }}</td> 
+            <td><form method = "post"> 
+                <input type = "hidden" name = "cmd" value = "del">
+                <input type ="hidden" name="id_" value={{item["id_"]}}> <button type="submit">[x]</button>
+                </form> 
+                </td>
+            <td> <a href = "/pay/{{item["id_"]}}"> edit </a></td>
+        </tr>
+    {% end %}
+    </table>    
+{% end %}
+ </body>

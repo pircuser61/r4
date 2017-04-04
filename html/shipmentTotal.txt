@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Shipment </title>
+ </head> 
+<body>
+<a href = "/"><= </a> <br>
+<a href = "/shipment/">  Shipment</a> <br>
+<a href="/reports/?cmd=shipment_paid"> Shipment оплаченные </a><br>
+<a href = "/reports/?cmd=shipment_total">Итого Shipment</a><br>
+<a href = "/reports/?cmd=shipment_full_paid">Завершенные Shipment</a><br>
+<br>
+<hr>
+
+{{messages}}
+
+<hr>
+
+{% if list   %}
+    <table>
+    <tr bgcolor="#AA88DD">
+    <td>id</td> 
+    <td>name</td> 
+    <td>sum</td>
+    <td>sum paid</td>
+    <td>thing_count</td>
+    <td>thing_total_sum</td>
+    <td>thing_total_paid</td>
+    <td>edit</td>
+    {% for item in list %}
+        <tr bgcolor="#DDBBFF">
+        <td>{{ item[0] }}</td> 
+        <td>{{ item[1] }}</td> 
+        <td>{{ item[2] }}</td>
+        <td>{{ item[3] }}</td> 
+        <td>{{ item[4] }}</td>         
+        <td>{{ item[5] }}</td> 
+        <td>{{ item[6] }}</td> 
+        <td> <a href = "/shipment/{{ item[0]}}"> edit </a>  </tr>
+        </tr>
+    {% end %}
+    </table> 
+{% else %}  
+    Нет записей
+{% end %}
+ <hr> 
+ </body>
+ </html>

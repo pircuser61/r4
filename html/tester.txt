@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Tester</title>
+</head>
+<body>
+<a href = "/"> <= </a> ,Tester
+<hr>
+
+<hr>
+User: {{user_count}}<br>
+<form method = "post" action = "/tester/">
+    <input type = "hidden" name = "cmd" value = "user_generate"> 
+    <input type = "text" name = "user_count" value = "1"> 
+    <input type = "submit" value = "generate"> 
+</form>
+<form method = "post" action = "/tester/">
+    <input type = "hidden" name = "cmd" value = "user_clear"> 
+    <input type = "submit" value = "clear"> 
+</form>
+<hr>
+ThingType: {{type_count}}<br>
+<form method = "post" action = "/tester/">
+    <input type = "hidden" name = "cmd" value = "type_generate"> 
+    <input type = "text" name = "type_count" value = "1"> 
+    <input type = "submit" value = "generate"> 
+</form>
+<form method = "post" action = "/tester/">
+    <input type = "hidden" name = "cmd" value = "type_clear"> 
+    <input type = "submit" value = "clear"> 
+</form>
+<hr>
+Thing: {{thing_count}}<br>
+<form method = "post" action = "/tester/">
+    <input type = "hidden" name = "cmd" value = "thing_generate"> 
+    <input type = "text" name = "thing_count" value = "1"> 
+    <input type = "submit" value = "generate"> 
+</form>
+<form method = "post" action = "/tester/">
+    <input type = "hidden" name = "cmd" value = "thing_clear"> 
+    <input type = "submit" value = "clear"> 
+</form>
+<hr>
+Pay: {{pay_count}}<br>
+<form method = "post" action = "/tester/">
+    <input type = "hidden" name = "cmd" value = "pay_generate"> 
+    <input type = "text" name = "pay_count" value = "1"> 
+    <input type = "submit" value = "generate"> 
+</form>
+<form method = "post" action = "/tester/">
+    <input type = "hidden" name = "cmd" value = "pay_clear"> 
+    <input type = "submit" value = "clear"> 
+</form>
+<hr><hr>
+<form method = "post" action = "/tester/">
+    <input type = "hidden" name = "cmd" value = "commit"> 
+    <input type = "submit" value = "commit"> 
+</form>
+<form method = "post" action = "/tester/">
+    <input type = "hidden" name = "cmd" value = "rollback"> 
+    <input type = "submit" value = "roll back"> 
+</form>
+</body>
+</html>

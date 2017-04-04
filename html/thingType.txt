@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>header</title>
+ </head> 
+<body>
+<a href = "/thing_type/"> <= </a> 
+<hr>
+{{messages}}
+
+{% if thingType %}
+    <form method="post">
+    <input type = "hidden" name = "id" value =" {{thingType[0]}}">
+    <input type = "hidden" name = "cmd" value = "upd">
+    <p><label> name </label> <input type = "text" name = "name" value = "{{thingType[1]}}"></p>
+    <button type = "submit" >Обновить</button>
+    </form>
+{% else %}
+    Запись не найдена
+{% end %}    
+<hr>
+</body>

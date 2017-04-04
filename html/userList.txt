@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Пользователи</title>
+ </head> 
+<body>
+<a href = "/"> <= </a> , <a href = "/user/">Пользователи </a> 
+<hr>
+{{messages}}
+
+<form method="post" >
+<input type = "hidden" name = "cmd" value = "add">
+<p>name <input type = "text" name = "name" ></p>
+<p>surname  <input type = "text" name = "surname" ></p>
+<p>age <input type = "text" name = "age" ></p>
+<button type = "submit" >добавить</button>
+</form>
+<hr>
+Total: {{userCount}}
+<br>
+{% if page > 0 %}
+    <a href = /user/?page=0> 0 </a> <a href = /user/?page={{page - 1 }}> <= </a>
+{% end %}   
+{{page}}
+{% if page < pageCount %}
+    <a href = /user/?page={{page+1}}> =></a><a href = /user/?page={{pageCount}}> {{pageCount}} </a> 
+{% end %}
+<hr>
+{% if users is None or len(users) < 1 %}
+    Нет записей
+{% else %}
+    <table >
+        <tr bgcolor="#AA88DD">
+        <td >id</td>
+        <td>name</td>
+        <td>surname</td>
+        <td>age</td>
+        <td></td>
+        <td></td>
+    {% for item in users %}
+        <tr bgcolor="#DDBBFF">
+        <td >{{ item[0] }}</td>
+        <td>{{ item[1] }}</td>
+        <td>{{ item[2] }}</td>
+        <td>{{ item[3] }}</td>
+        <td>
+            <form method = "post"> 
+            <input type = "hidden" name = "cmd" value = "del">
+            <input type ="hidden" name="id" value={{item[0]}}> 
+            <button type="submit">[x]</button>
+            </form>
+        </td>
+        <td> <a href = "/user/{{ item[0]}}"> edit </a>  </tr>
+        {% end %}
+    </table>
+    {% end %}
+ </body>

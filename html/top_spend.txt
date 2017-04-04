@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>{{title}}</title>
+ </head> 
+<body>
+<hr>
+<a href = "/reports/"> <= </a>  {{title}}
+{{messages}}
+<hr>
+
+{% if items  %}
+    <table>
+    <tr bgcolor="#AA88DD">
+    <td>id</td> 
+    <td>name</td> 
+    <td>spend</td>
+    <td>del</td> 
+    <td>edit</td> 
+    {% for item in items %}
+        <tr bgcolor="#DDBBFF">
+        <td>{{ item[0] }}</td> 
+        <td> 
+            <a href = "/user/{{item[0]}}">{{ item[1] }}  </a>
+        </td> 
+        <td>{{ item[2] }}</td>
+        <td>
+            <form method = "post"> 
+            <input type = "hidden" name = "cmd" value = "del">
+            <input type ="hidden" name="id" value={{item[0]}}> <button type="submit">[x]</button>
+            </form> 
+            </td>
+        <td> <a href = "/user/{{item[0]}}"> edit </a></td>
+        </tr>
+    {% end %}
+    </table> 
+{% else %}  
+    Нет записей
+{% end %}
+ <hr> 
+ </body>
+ </html>

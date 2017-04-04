@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Main</title>
+ </head> 
+<body>
+<a href = /user/> Пользователи</a><br>
+<a href = /thing_type/> Виды товаров </a><br>
+<a href = /thing/> Товары</a><br>
+
+<a href = /pay/> Платежи за товары</a><br>
+<a href = /shipment/> Поставки </a><br>
+<a href = /shipment_pay/> Оплата поставок</a><br>
+<hr>
+<a href = /reports/> Отчеты</a><br>
+<hr>
+<a href = /tester/>Tester</a><br>
+</body>

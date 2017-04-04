@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Shipment</title>
+ </head> 
+<body>
+<a href = "/"> <= </a>,
+<a href = "/shipment/">Поставки </a> <br>
+
+
+<hr>
+{{messages}}
+
+<form method="post" >
+<input type = "hidden" name = "cmd" value = "add">
+<p>name <input type = "text" name = "name" ></p>
+<p>sum  <input type = "text" name = "sum_" ></p>
+<p>date <input type = "text" name = "date" ></p>
+<button type = "submit" >добавить</button>
+</form>
+<hr>
+Total: 
+<br>
+
+<hr>
+{% if list %}
+
+    <table >
+        <tr bgcolor="#AA88DD">
+        <td >id</td>
+        <td>name</td>
+        <td>date</td>
+        <td>sum</td>
+        <td>total payd</td>
+        <td></td>
+        <td></td>
+    {% for item in list %}
+        <tr bgcolor="#DDBBFF">
+        <td >{{ item[0] }}</td>
+        <td>{{ item[1] }}</td>
+        <td>{{ item[3] }}</td>
+        <td>{{ item[2] }}</td>
+         <td>{{ item[4] }}</td>
+        <td>
+            <form method = "post"> 
+            <input type = "hidden" name = "cmd" value = "del">
+            <input type ="hidden" name="id_" value={{item[0]}}> 
+            <button type="submit">[x]</button>
+            </form>
+        </td>
+        <td> <a href = "/shipment/{{ item[0]}}"> edit </a>  </tr>
+	{% end %}
+    </table>		   
+{% else %}
+    Нет записей 
+{% end %}
+ </body>

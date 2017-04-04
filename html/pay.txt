@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>header</title>
+ </head> 
+<body>
+<a href = "/pay/"> <= </a> 
+<hr>
+{{messages}}
+
+
+{% if pay is None %}
+    Не найдена запись с заданным id
+{% else %}
+
+
+    <form method="post" action = "/pay/">
+    <input type = "hidden" name = "cmd" value = "upd">
+    <input type = "hidden" name = "id_" value = "{{pay["id_"]}}">
+    <p> date   <input type = "text" name = "date" value = "{{pay["date_"]}}"></p>
+    <p> caption  <input type = "text" name = "caption" value = "{{pay["caption"]}}"></p>
+    <p> user <input type = "text" name = "user" value = "{{pay["user"]}}"></p>
+
+ 
+    <p>thing <select size ="0" name = "thing" required>
+    {% for item in things %}
+        {% if pay["thing"] == item [0] %}
+            <option selected value = "{{item[0]}}"> {{item[0]}}:{{item[1]}}</option> 
+        {% else %}
+            <option value = "{{item[0]}}"> {{item[0]}}:{{item[1]}}</option> 
+        {% end %}
+    {% end %}
+    </select></p>
+
+    <p> sum  <input type = "text" name =  "sum" value = "{{pay["sum_"]}}"></p>
+    <button type = "submit" >Обновить</button>
+    </form>
+{% end %}
+
+<hr>
+
+</body>

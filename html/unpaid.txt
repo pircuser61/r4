@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Неоплаченные</title>
+ </head> 
+<body>
+<hr>
+<a href = "/reports/"> <= </a> 
+{{messages}}
+<hr>
+
+{% if things   %}
+    <table>
+    <tr bgcolor="#AA88DD">
+    <td>id</td> 
+    <td>name</td> 
+    <td>type</td>
+    <td>user</td> 
+    <td>sum</td> 
+    <td>remain</td> 
+    <td>pay count</td> 
+    <td>del</td> 
+    <td>edit</td> 
+    {% for item in things %}
+        <tr bgcolor="#DDBBFF">
+        <td>{{ item[0] }}</td> 
+        <td>{{ item[1] }}</td> 
+        <td>{{ item[2] }}</td>
+        <td>{{ item[3] }}</td> 
+        <td>{{ item[4] }}</td> 
+        <td>{{ item[5] }}</td> 
+        <td>{{ item[6] }}</td> 
+        <td>
+            <form method = "post"> 
+            <input type = "hidden" name = "cmd" value = "del">
+            <input type ="hidden" name="id" value={{item[0]}}> <button type="submit">[x]</button>
+            </form> 
+            </td>
+        <td> <a href = "/thing/{{item[0]}}"> edit </a></td>
+        </tr>
+    {% end %}
+    </table> 
+{% else %}  
+    Нет записей
+{% end %}
+ <hr> 
+ </body>
+ </html>

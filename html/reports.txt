@@ -1,0 +1,20 @@
+﻿<!DOCTYPE = html>
+ <head>
+ <meta charset = "utf-8">
+ </head>
+ <body>
+ <hr>
+ <a href = "/"> <= </a> 
+ <hr>
+<a href="/reports/?cmd=unpaid" > Неоплаченные </a><br>
+<a href="/reports/?cmd=top_spend"> Top10</a><br>
+<a href="/reports/?cmd=top_spend_1"> Top10 old</a><br>
+<a href="/reports/?cmd=spend_on_other"> Потратил на других </a><br>
+<a href="/reports/?cmd=cadger"> Попрошайки </a><br>
+<a href="/reports/?cmd=shipment_paid"> Shipment оплаченные </a><br>
+<a href="/reports/?cmd=thing_paid"> Thing оплаченные </a><br>
+<a href="/reports/?cmd=thing_unpaid"> Thing НЕ оплаченные </a><br>
+<a href = "/reports/?cmd=shipment_total">Итого Shipment</a><br>
+<a href = "/reports/?cmd=shipment_full_paid">Завершенные Shipment</a><br>
+
+</body>

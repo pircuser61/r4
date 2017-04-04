@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Shipment</title>
+ </head> 
+<body>
+<a href = "/shipment/"> <= </a> 
+<hr>
+{{messages}}
+{% if shipment is None %}
+    Запись не найдена
+{% else %}
+    <form method="post">
+    <input type = "hidden" name = "cmd" value = "upd">
+    <input type = "hidden" name = "id_" value = {{shipment[0]}}>
+    <p><label> name </label> <input type = "text" name = "name" value = "{{shipment[1]}}"></p>
+    <p><label>sum </label> <input type = "text" name = "sum_" value = "{{shipment[2]}}"></p>
+    <p><label> date</label> <input type = "text" name = "date_" value = "{{shipment[3]}}"></p>
+    <button type = "submit" >Обновить</button>
+    </form>
+{% end if %}
+<hr>
+	{% if actions %}
+    <table>
+    <tr bgcolor="#DDBBFF">
+    <td> shipment id</td>
+    <td> thing id</td>
+    <td> date</td>    
+    <td> thing_pay</td>
+    <td> shipment_pay</td> 
+    <td> balance</td> 
+    <td> sum </td> 
+    </tr>
+	{% for x  in actions %}
+	<tr bgcolor="#DDBBFF">
+    <td> {{x[0]}}</td>
+    <td> {{x[1]}}</td> 
+    <td> {{x[2]}}</td> 
+    <td> {{x[3]}}</td> 
+    <td> {{x[4]}}</td> 
+    <td> {{x[5]}}</td> 
+    <td> {{x[6]}}</td> 
+    </tr>
+	{%end%}
+     </table>
+{% else %}
+	Нет операций
+{% end %}
+</body>

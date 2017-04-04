@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Пользователь</title>
+ </head> 
+<body>
+<a href = "/shipment_pay/"> <= </a> 
+<hr>
+{{messages}}
+{% if shipment_pay is None %}
+    Запись не найдена
+{% else %}
+    <form method="post">
+    <input type = "hidden" name = "cmd" value = "upd">
+    <input type = "hidden" name = "id_" value = {{shipment_pay[0]}}>
+    <p><label> sum</label> <input type = "text" name = "sum_" value = "{{shipment_pay[1]}}"></p>
+    <p><label>  date</label> <input type = "text" name = "date" value = "{{shipment_pay[2]}}"></p>
+    <p><label> shipment  </label> <input type = "text" name = "shipment" value = "{{shipment_pay[3]}}"></p>
+    <button type = "submit" >Обновить</button>
+    </form>
+{% end if %}
+<hr>
+
+</body>
